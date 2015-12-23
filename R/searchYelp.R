@@ -2,7 +2,7 @@ library(httr)
 load("yelpOAuth.RData")
 
 # SEARCH 
-searchYelp <- function(location, term, limit, offset, sort, category_filter, radius_filter, deals_filter, mySignature) {
+searchYelp <- function(signature, location, term = NULL, limit = NULL, offset = NULL, sort = NULL, category_filter = NULL, radius_filter = NULL, deals_filter = NULL) {
     url <- "https://api.yelp.com/v2/search?"
     url <- parse_url("https://api.yelp.com/v2/search?")
     
@@ -55,7 +55,7 @@ searchYelp <- function(location, term, limit, offset, sort, category_filter, rad
     
     # build query url and get the data
     url <- URLdecode(build_url((url))
-    search <- GET((url), mySignature)
+    search <- GET((url), signature)
 }
 
 
